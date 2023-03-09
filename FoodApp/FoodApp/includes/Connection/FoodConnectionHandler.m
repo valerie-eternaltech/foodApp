@@ -18,14 +18,16 @@
     
     NSString *query = [mTargetFood stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",foodNutritionURL, query]];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", @"advisor", apiKey];
     NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
     NSString *base64EncodedAuthData = [authData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     NSString *authValue = [NSString stringWithFormat:@"Basic %@", base64EncodedAuthData];
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+    request.timeoutInterval = 5; // set timeout to 5 seconds
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(error != nil)
+        if(error != nil || error.code == NSURLErrorTimedOut)
         {
             [self->_delegate FoodConnectionHandler:self didFinishTargetFood:NO fooddetail:nil foodRecipe:nil];
         }else if ([data length] > 0 && error == nil) {
@@ -107,9 +109,12 @@
 
             }
             @catch (NSException * __unused exception) { }
+        }else{
+            [self->_delegate FoodConnectionHandler:self didFinishTargetFood:NO fooddetail:nil foodRecipe:nil];
         }
     
     }];
+    
     [task resume];
 }
 -(NSNumber *)convertMgtoG:(NSNumber *)valueMg{
@@ -144,5 +149,67 @@
     }
     return mtempRecipt;
 
+}
+- (void)getRecipeDetail:(NSString *)targetId{
+//    for(int i=0;i<FoodReceiptArray.count;i++){
+//        NSMutableDictionary *mtempitem = [[NSMutableDictionary alloc] init];
+//        NSDictionary *mRecipt = [FoodReceiptArray objectAtIndex:i];
+//        //id;
+//        NSString *myString = [[mRecipt objectForKey:@"id"] stringValue];
+//
+//        [mtempitem setValue:myString  forKey:@"id"];
+//        //title name
+//        [mtempitem setValue:[mRecipt objectForKey:@"title"]  forKey:@"title"];
+//        [mtempitem setValue:[mRecipt objectForKey:@"image"]  forKey:@"image"];
+////        mRecipt
+//        [mtempRecipt addObject:mtempitem];
+//    }
+//    return mtempRecipt;
+    
+    NSString *query = targetId;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",foodRecipeStep, query]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", @"advisor", apiKey];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *base64EncodedAuthData = [authData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", base64EncodedAuthData];
+    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+    request.timeoutInterval = 5; // set timeout to 5 seconds
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if(error != nil || error.code == NSURLErrorTimedOut)
+        {
+            [self->_delegate FoodConnectionHandler:self didFinishRecipeDetail:NO foodRecipe:nil];
+        }else if ([data length] > 0 && error == nil) {
+            
+            // success case:
+            @try {
+                NSMutableArray *dictArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                NSMutableArray *FoodReceiptStep = [[NSMutableArray alloc] init];
+                NSDictionary *dictDetail = [dictArray objectAtIndex:0];
+            
+                NSMutableArray *FoodReceiptDict =  [dictDetail objectForKey:@"steps"];
+                for(int i = 0; i <FoodReceiptDict.count ;i++)
+                {
+                    NSMutableDictionary *mdetail = [[NSMutableDictionary alloc] init];
+                    NSDictionary *mtargetdetail =  [FoodReceiptDict objectAtIndex:i];
+                    NSString *mstep = [mtargetdetail objectForKey:@"step"];
+                    [mdetail setValue:mstep forKey:@"step"];
+                    NSString *number = [mtargetdetail objectForKey:@"number"];
+                    [mdetail setValue:number forKey:@"number"];
+                
+                    [FoodReceiptStep addObject:mdetail];
+                }
+                [self->_delegate FoodConnectionHandler:self didFinishRecipeDetail:YES foodRecipe:FoodReceiptStep];
+
+            }
+            @catch (NSException * __unused exception) { }
+        }else{
+            [self->_delegate FoodConnectionHandler:self didFinishRecipeDetail:NO foodRecipe:nil];
+        }
+    
+    }];
+    
+    [task resume];
 }
 @end

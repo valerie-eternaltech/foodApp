@@ -28,6 +28,7 @@
     _sugarText  = @"Sugar";
     _foodTitleText = @"Food Nutrition Information";
     _foodSearchText = @"  Food Search";
+    _foodStepText = @"Step";
     return self;
 }
 

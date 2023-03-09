@@ -9,6 +9,8 @@
 #import "FoodConnectionHandler.h"
 #import "FoodInfoString.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ReciptStepViewController.h"
+#import "ReciptStepNavigationController.h"
 #import "foodPie.h"
 @interface ViewController ()
 @end
@@ -17,9 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // stop loading spinner at beginning
+    [_loadingProgressView stopAnimating];
     FoodInfoString *foodInfoString = [[FoodInfoString alloc] init];
     [_tbFoodDetail registerNib:[UINib nibWithNibName:@"FoodNutritionTableCellView" bundle:nil] forCellReuseIdentifier:@"FoodNutritionTableCellView"];
     _tfsearch.layer.cornerRadius = 10.0;
+    _nutritionTitle.hidden = YES;
+    _imgRecipe.hidden= YES;
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ReciptStepViewController" bundle:nil];
+    _ReciptStepNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ReciptStepNavigationController"];
+    _mReciptStepViewController = _ReciptStepNavigationController.childViewControllers[0];
+    //                //not full screen?
+//    _ReciptStepNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     _embeddedVC = [self.storyboard instantiateViewControllerWithIdentifier:@"foodPie"];
     [self addChildViewController:_embeddedVC];
     [self.containerView addSubview:_embeddedVC.view];
@@ -46,16 +57,23 @@
     [self.imgFood addGestureRecognizer:foodDetailtapGesture];
     
     UITapGestureRecognizer *recipetapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showRecipe:)];
-    self.imgFood.userInteractionEnabled = YES;
-    [self.imgFood addGestureRecognizer:recipetapGesture];
+    self.imgRecipe.userInteractionEnabled = YES;
+    [self.imgRecipe addGestureRecognizer:recipetapGesture];
 
 }
 - (void)showFoodNutrition:(UITapGestureRecognizer *)tapGesture {
     // show food detail
+    self->_tbFoodDetail.hidden = YES;
+    self->_embeddedVC.view.hidden = NO;
 }
 
 - (void)showRecipe:(UITapGestureRecognizer *)tapGesture {
     // show food detail
+    self->_tbFoodDetail.hidden = NO;
+    [_tbFoodDetail reloadData];
+    self->_embeddedVC.view.hidden = YES;
+
+
 }
 
 - (void)handleInfoTapGesture:(UITapGestureRecognizer *)tapGesture {
@@ -76,44 +94,91 @@
 }
 - (IBAction)searchClick:(id)sender {
     _targetFood = _tfsearch.text;
-    _nutritionTitle.text = _tfsearch.text;
-    if(_targetFood.length >0)
+    // set loading spinner and delegate will start method
+    [self.loadingProgressView startAnimating];
+    _nutritionTitle.hidden = NO;
+    _nutritionTitle.text = [_tfsearch.text uppercaseString];
+    _tbFoodDetail.hidden = YES;
+    self->_embeddedVC.view.hidden = YES;
+    if(_targetFood.length > 0)
     {
         [_mFoodConnectionHandler getTargetFoodNutrition:_targetFood];
     }
 
 }
 #pragma mark - FoodConnectionHandlerDelegate
+-(void)FoodConnectionHandler:(FoodConnectionHandler *)handler didFinishRecipeDetail:(BOOL)success foodRecipe:(NSMutableArray *)foodRecipe{
+    
+    if(success)
+    {
+        _mReciptStepViewController.finalStep = foodRecipe;
 
-- (void)FoodConnectionHandler:(FoodConnectionHandler *)handler didFinishTargetFood:(BOOL)success fooddetail:(NSDictionary *)mfoodDetailInfo foodRecipe:(NSMutableArray *)RecipeList{
-    if (success) {
+        [self showDialog];
         
+
+    }else{
+        //no detail
+    }
+}
+    
+-(void)showDialog{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:_ReciptStepNavigationController animated:YES completion:nil];
+    });
+
+}
+- (void)FoodConnectionHandler:(FoodConnectionHandler *)handler didFinishTargetFood:(BOOL)success fooddetail:(NSDictionary *)mfoodDetailInfo foodRecipe:(NSMutableArray *)RecipeList{
+
+    if (success) {
         if(mfoodDetailInfo.count>0)
         {
+            
             mfoodDetailInfo = mfoodDetailInfo;
             _FoodKey = [mfoodDetailInfo allKeys];
             _FoodValue = [mfoodDetailInfo allValues];
-            
+            _RecipeList = [[NSMutableArray alloc]init];
+            _RecipeList = RecipeList;
+         
             dispatch_async(dispatch_get_main_queue(), ^{
+                _embeddedVC.view.hidden = NO;
+                [self.loadingProgressView stopAnimating];
+                if(self->_RecipeList.count > 0)
+                {
+                    [self->_tbFoodDetail reloadData];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        // Code to execute after delay
+                        
+                        self->_imgRecipe.hidden= NO;
+
+
+                    });
+
+                }else{
+                    self->_imgRecipe.hidden= YES;
+                }
 //                [self->_tbFoodDetail reloadData];
 //                [self->_tbFoodDetail setHidden:NO];
 //                [self -> _imgEmpty setHidden:YES];
                    [self.containerView setHidden:NO];
-                _embeddedVC.FoodKey =_FoodKey;
-                _embeddedVC.FoodValue =_FoodValue;
+                self->_embeddedVC.FoodKey =self->_FoodKey;
+                self->_embeddedVC.FoodValue =self->_FoodValue;
                 [self->_embeddedVC initWithChartType];
            
-                
             });
             
             
         }
     }else{
         //fail
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"We do not have this Nutrition data." preferredStyle:UIAlertControllerStyleAlert];
-         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-         [alert addAction:okAction];
-         [self presentViewController:alert animated:YES completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loadingProgressView stopAnimating];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"We do not have this Nutrition data. Please check the internet and try again" preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+             [alert addAction:okAction];
+             [self presentViewController:alert animated:YES completion:nil];
+    });
+       
     }
 }
 
@@ -127,11 +192,12 @@
         // Set up the cell...
     }
     - (void)configureCell:(FoodNutritionTableCellView *)cell atIndexPath:(NSIndexPath *)indexPath {
+     
         //pdate cellForRowAtIndexPath like the following
-        //    NSDictionary *targetFoodDetail = [_finalTargetFood objectAtIndex:indexPath.row];
-        NSString *mFoodKey =  [_FoodKey objectAtIndex:indexPath.row];
-        NSNumber *mFoodValue =  [_FoodValue objectAtIndex:indexPath.row];
-        [cell initCellData:mFoodKey FoodDetailNum:mFoodValue];
+            NSDictionary *targetRecipeDetail = [_RecipeList objectAtIndex:indexPath.row];
+        NSString *mRecipeTitle =  [targetRecipeDetail objectForKey:@"title"];
+        NSString *mRecipeURL =  [targetRecipeDetail objectForKey:@"image"];
+        [cell initCellData:mRecipeTitle ReciptImage:mRecipeURL];
     }
     
 #pragma mark - UITableViewDelegate
@@ -147,6 +213,10 @@
     }
     - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         NSLog(@"%lu", (unsigned long)indexPath.row);
+        NSDictionary *targetRecipeDetail = [_RecipeList objectAtIndex:indexPath.row];
+        NSString *mRecipeId =  [targetRecipeDetail objectForKey:@"id"];
+        [_mFoodConnectionHandler getRecipeDetail:mRecipeId];
+        
     }
 
 @end

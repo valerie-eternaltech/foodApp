@@ -99,7 +99,7 @@
     UILabel *label = [[UILabel alloc] init];
     [label setFont:[UIFont systemFontOfSize:12]];
     [label setTextAlignment:NSTextAlignmentCenter];
-    [label setText:[NSString stringWithFormat:@"%@ : %@ gram", value]];
+    [label setText:[NSString stringWithFormat:@"%@ gram", value]];
     [label setFrame:CGRectMake(0, 0, 100, 30)];
     [view addSubview:label];
     

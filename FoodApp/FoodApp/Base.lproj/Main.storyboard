@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EpU-Dr-JPb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EpU-Dr-JPb">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,11 +80,15 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xZh-An-ukh">
-                                <rect key="frame" x="30" y="511.33333333333326" width="330" height="350"/>
+                                <rect key="frame" x="0.0" y="369.33333333333326" width="390" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="LDV-9V-89z"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="zR2-jR-O3L"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aIh-uv-sxf"/>
+                                </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_food" translatesAutoresizingMaskIntoConstraints="NO" id="BOQ-dc-hQA">
                                 <rect key="frame" x="120" y="561.33333333333337" width="150" height="150"/>
@@ -108,7 +112,7 @@
                             <constraint firstItem="SBj-zU-NUN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1Ri-4M-CDS"/>
                             <constraint firstItem="7q5-wa-hV4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="1zM-p7-w1Z"/>
                             <constraint firstItem="e4K-Ae-Csh" firstAttribute="bottom" secondItem="SBj-zU-NUN" secondAttribute="top" constant="-20" id="9nd-aN-C19"/>
-                            <constraint firstItem="xZh-An-ukh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="HVA-IP-Vp7"/>
+                            <constraint firstItem="xZh-An-ukh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HVA-IP-Vp7"/>
                             <constraint firstItem="e4K-Ae-Csh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Nsb-xJ-2lq"/>
                             <constraint firstItem="rPO-tr-tfE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="OBC-nt-SoN"/>
                             <constraint firstItem="7q5-wa-hV4" firstAttribute="top" secondItem="OVz-N0-DoB" secondAttribute="bottom" constant="16" id="Vqj-jY-pd7"/>
@@ -116,19 +120,18 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3iO-Qu-AE1" secondAttribute="trailing" constant="16" id="aer-aL-PYi"/>
                             <constraint firstItem="7vo-qu-Xaa" firstAttribute="trailing" secondItem="7q5-wa-hV4" secondAttribute="trailing" constant="-20" id="c6U-Z4-VHE"/>
                             <constraint firstItem="e4K-Ae-Csh" firstAttribute="top" secondItem="7q5-wa-hV4" secondAttribute="bottom" constant="10" id="dVb-zU-Wta"/>
-                            <constraint firstItem="xZh-An-ukh" firstAttribute="top" secondItem="rPO-tr-tfE" secondAttribute="bottom" constant="10" id="dfN-Fb-o5M"/>
+                            <constraint firstItem="xZh-An-ukh" firstAttribute="top" secondItem="SBj-zU-NUN" secondAttribute="bottom" constant="1" id="dfN-Fb-o5M"/>
                             <constraint firstItem="OVz-N0-DoB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="flG-5u-bTb"/>
                             <constraint firstItem="rPO-tr-tfE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hCy-9X-nLz"/>
                             <constraint firstItem="BOQ-dc-hQA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kXT-XG-8RM"/>
                             <constraint firstItem="3iO-Qu-AE1" firstAttribute="centerY" secondItem="7q5-wa-hV4" secondAttribute="centerY" id="kfs-N1-wTS"/>
                             <constraint firstItem="7vo-qu-Xaa" firstAttribute="centerY" secondItem="7q5-wa-hV4" secondAttribute="centerY" id="l8g-d5-sD3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xZh-An-ukh" secondAttribute="trailing" constant="30" id="ojX-gQ-7es"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xZh-An-ukh" secondAttribute="trailing" id="ojX-gQ-7es"/>
                             <constraint firstItem="BOQ-dc-hQA" firstAttribute="top" secondItem="xZh-An-ukh" secondAttribute="top" constant="50" id="rfQ-Xw-kTA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7q5-wa-hV4" secondAttribute="trailing" constant="60" id="v2H-fQ-EtX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="xZh-An-ukh"/>
                                 <exclude reference="BOQ-dc-hQA"/>
                             </mask>
                         </variation>

@@ -13,6 +13,7 @@
 
 @optional
 - (void)FoodConnectionHandler:(FoodConnectionHandler *)handler didFinishTargetFood:(BOOL)success fooddetail:(NSDictionary *)foodDetailInfo foodRecipe:(NSMutableArray *)RecipeList;
+- (void)FoodConnectionHandler:(FoodConnectionHandler *)handler didFinishRecipeDetail:(BOOL)success foodRecipe:(NSArray *)foodRecipe;
 //- (void)BusConnectionHandler:(BusConnectionHandler *)handler didFinishGetAllCTBRoute:(BOOL)success;
 //- (void)BusConnectionHandler:(BusConnectionHandler *)handler didFinishGetAllNWFBRoute:(BOOL)success;
 //- (void)BusConnectionHandler:(BusConnectionHandler *)handler didFinishGetAllBusRoute:(NSMutableArray *)mBusRouteInformation;
@@ -23,6 +24,7 @@
 @property (nonatomic, weak) id <FoodConnectionDelegate> delegate;
 
 - (void)getTargetFoodNutrition:(NSString *)mTargetFood;
-//- (void)getAllNWFBRoute:(NSMutableArray *)mBusRouteInformation;
+- (void)getRecipeDetail:(NSString *)mTargetFood;
+
 
 @end

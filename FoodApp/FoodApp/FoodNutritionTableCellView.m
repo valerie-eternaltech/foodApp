@@ -24,17 +24,17 @@
     // Configure the view for the selected state
 }
 
-- (void)initCellData:(NSString *)mFoodDetail FoodDetailNum:(NSNumber *)mFoodDetailNum{
-    [_lbFoodInfoName setText:mFoodDetail];
-    NSString *szFoodDetailNum = [mFoodDetailNum stringValue];
-    szFoodDetailNum = [NSString stringWithFormat:@"%@%@", szFoodDetailNum, @"g"];
-    [_lbItemDetail setText:szFoodDetailNum];
-    float percentage = 0.f ;
-    double value  = [szFoodDetailNum doubleValue];
-//    percentage = (float) value/100;
-//    _linebar.trackTintColor = [UIColor whiteColor];
-//    _linebar.progress = percentage;
-//    _linebar.progressTintColor =[UIColor colorProgressOrange];
+- (void)initCellData:(NSString *)mRecipeTitle ReciptImage:(NSString *)mRecipeURL{
+    [_lbItemTitle setText:mRecipeTitle];
+//    mRecipeURL
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSURL *url = [NSURL URLWithString:mRecipeURL];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self.lbItemImage setImage:image];
+        });
+    });
     [self layoutIfNeeded];
 }
 @end

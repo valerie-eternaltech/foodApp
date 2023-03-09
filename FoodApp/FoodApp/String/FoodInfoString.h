@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *fiberText;
 @property (strong, nonatomic) NSString *sugarText;
 @property (strong, nonatomic) NSString *foodSearchText;
-
+@property (strong, nonatomic) NSString *foodStepText;
 @end
 
 NS_ASSUME_NONNULL_END

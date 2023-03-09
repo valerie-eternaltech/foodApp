@@ -22,14 +22,19 @@
 		55DC4347299C940600A0F2DE /* GlobalConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DC4346299C940600A0F2DE /* GlobalConstant.m */; };
 		55DC434B299CA89200A0F2DE /* FoodConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DC434A299CA89200A0F2DE /* FoodConnectionHandler.m */; };
 		55DC4353299CB82000A0F2DE /* FoodInfoString.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DC4352299CB82000A0F2DE /* FoodInfoString.m */; };
-		55DC435B299CBDD700A0F2DE /* FoodNutritionTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DC435A299CBDD700A0F2DE /* FoodNutritionTableCellView.m */; };
-		55DC435E299CBE0100A0F2DE /* FoodNutritionTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DC435D299CBE0100A0F2DE /* FoodNutritionTableCellView.xib */; };
 		F370C59129AB2D2500846C70 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = F370C59029AB2D2400846C70 /* UIImage+animatedGIF.m */; };
 		F370C59429AB2D5000846C70 /* welcomeMain.m in Sources */ = {isa = PBXBuildFile; fileRef = F370C59229AB2D5000846C70 /* welcomeMain.m */; };
+		F385714329BA310C00390133 /* ReciptStepViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F385714229BA310C00390133 /* ReciptStepViewController.storyboard */; };
 		F3F5F03929AFBDD900099658 /* Foody.gif in Resources */ = {isa = PBXBuildFile; fileRef = F3F5F03829AFBDD800099658 /* Foody.gif */; };
 		F3F5F04929AFC11C00099658 /* LegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F04529AFC11C00099658 /* LegendView.m */; };
 		F3F5F04A29AFC11C00099658 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F04829AFC11C00099658 /* PieChart.m */; };
 		F3F5F04D29AFC1A100099658 /* foodPie.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F04B29AFC1A100099658 /* foodPie.m */; };
+		F3F5F05129B9F23400099658 /* FoodNutritionTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F04F29B9F23400099658 /* FoodNutritionTableCellView.m */; };
+		F3F5F05229B9F23400099658 /* FoodNutritionTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F5F05029B9F23400099658 /* FoodNutritionTableCellView.xib */; };
+		F3F5F06129BA0BDF00099658 /* ReciptStepCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F5F05D29BA0BDF00099658 /* ReciptStepCellView.xib */; };
+		F3F5F06429BA0CFF00099658 /* ReciptStepCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F06329BA0CFF00099658 /* ReciptStepCellView.m */; };
+		F3F5F06B29BA0F6900099658 /* ReciptStepNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F06A29BA0F6900099658 /* ReciptStepNavigationController.m */; };
+		F3F5F06D29BA10E700099658 /* ReciptStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F06C29BA10E700099658 /* ReciptStepViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,13 +81,11 @@
 		55DC434C299CA8A300A0F2DE /* FoodConnectionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodConnectionHandler.h; sourceTree = "<group>"; };
 		55DC4352299CB82000A0F2DE /* FoodInfoString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodInfoString.m; sourceTree = "<group>"; };
 		55DC4354299CB82C00A0F2DE /* FoodInfoString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodInfoString.h; sourceTree = "<group>"; };
-		55DC435A299CBDD700A0F2DE /* FoodNutritionTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodNutritionTableCellView.m; sourceTree = "<group>"; };
-		55DC435C299CBDEC00A0F2DE /* FoodNutritionTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodNutritionTableCellView.h; sourceTree = "<group>"; };
-		55DC435D299CBE0100A0F2DE /* FoodNutritionTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodNutritionTableCellView.xib; sourceTree = "<group>"; };
 		F370C58F29AB2D2400846C70 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		F370C59029AB2D2400846C70 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		F370C59229AB2D5000846C70 /* welcomeMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = welcomeMain.m; sourceTree = "<group>"; };
 		F370C59329AB2D5000846C70 /* welcomeMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = welcomeMain.h; sourceTree = "<group>"; };
+		F385714229BA310C00390133 /* ReciptStepViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReciptStepViewController.storyboard; sourceTree = "<group>"; };
 		F3F5F03829AFBDD800099658 /* Foody.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Foody.gif; sourceTree = "<group>"; };
 		F3F5F04429AFC11C00099658 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F3F5F04529AFC11C00099658 /* LegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegendView.m; sourceTree = "<group>"; };
@@ -91,6 +94,16 @@
 		F3F5F04829AFC11C00099658 /* PieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChart.m; sourceTree = "<group>"; };
 		F3F5F04B29AFC1A100099658 /* foodPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foodPie.m; sourceTree = "<group>"; };
 		F3F5F04C29AFC1A100099658 /* foodPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foodPie.h; sourceTree = "<group>"; };
+		F3F5F04E29B9F23400099658 /* FoodNutritionTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodNutritionTableCellView.h; sourceTree = "<group>"; };
+		F3F5F04F29B9F23400099658 /* FoodNutritionTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodNutritionTableCellView.m; sourceTree = "<group>"; };
+		F3F5F05029B9F23400099658 /* FoodNutritionTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodNutritionTableCellView.xib; sourceTree = "<group>"; };
+		F3F5F05D29BA0BDF00099658 /* ReciptStepCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciptStepCellView.xib; sourceTree = "<group>"; };
+		F3F5F06329BA0CFF00099658 /* ReciptStepCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReciptStepCellView.m; sourceTree = "<group>"; };
+		F3F5F06529BA0D0D00099658 /* ReciptStepCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReciptStepCellView.h; sourceTree = "<group>"; };
+		F3F5F06929BA0F5F00099658 /* ReciptStepNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReciptStepNavigationController.h; sourceTree = "<group>"; };
+		F3F5F06A29BA0F6900099658 /* ReciptStepNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReciptStepNavigationController.m; sourceTree = "<group>"; };
+		F3F5F06C29BA10E700099658 /* ReciptStepViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReciptStepViewController.m; sourceTree = "<group>"; };
+		F3F5F06E29BA111E00099658 /* ReciptStepViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReciptStepViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +177,18 @@
 				F370C59229AB2D5000846C70 /* welcomeMain.m */,
 				55DC4312299C8ADC00A0F2DE /* ViewController.h */,
 				55DC4313299C8ADC00A0F2DE /* ViewController.m */,
-				55DC435D299CBE0100A0F2DE /* FoodNutritionTableCellView.xib */,
-				55DC435C299CBDEC00A0F2DE /* FoodNutritionTableCellView.h */,
+				F385714229BA310C00390133 /* ReciptStepViewController.storyboard */,
+				F3F5F04E29B9F23400099658 /* FoodNutritionTableCellView.h */,
+				F3F5F04F29B9F23400099658 /* FoodNutritionTableCellView.m */,
+				F3F5F05029B9F23400099658 /* FoodNutritionTableCellView.xib */,
+				F3F5F06929BA0F5F00099658 /* ReciptStepNavigationController.h */,
+				F3F5F06A29BA0F6900099658 /* ReciptStepNavigationController.m */,
+				F3F5F06E29BA111E00099658 /* ReciptStepViewController.h */,
+				F3F5F06C29BA10E700099658 /* ReciptStepViewController.m */,
+				F3F5F06529BA0D0D00099658 /* ReciptStepCellView.h */,
+				F3F5F06329BA0CFF00099658 /* ReciptStepCellView.m */,
+				F3F5F05D29BA0BDF00099658 /* ReciptStepCellView.xib */,
 				F3F5F03829AFBDD800099658 /* Foody.gif */,
-				55DC435A299CBDD700A0F2DE /* FoodNutritionTableCellView.m */,
 				55DC4315299C8ADC00A0F2DE /* Main.storyboard */,
 				55DC431B299C8ADE00A0F2DE /* Assets.xcassets */,
 				55DC431D299C8ADE00A0F2DE /* LaunchScreen.storyboard */,
@@ -222,8 +243,8 @@
 		55DC4349299CA87700A0F2DE /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				55DC434A299CA89200A0F2DE /* FoodConnectionHandler.m */,
 				55DC434C299CA8A300A0F2DE /* FoodConnectionHandler.h */,
+				55DC434A299CA89200A0F2DE /* FoodConnectionHandler.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -342,8 +363,10 @@
 			files = (
 				55DC431F299C8ADE00A0F2DE /* LaunchScreen.storyboard in Resources */,
 				55DC431C299C8ADE00A0F2DE /* Assets.xcassets in Resources */,
-				55DC435E299CBE0100A0F2DE /* FoodNutritionTableCellView.xib in Resources */,
+				F3F5F05229B9F23400099658 /* FoodNutritionTableCellView.xib in Resources */,
 				F3F5F03929AFBDD900099658 /* Foody.gif in Resources */,
+				F3F5F06129BA0BDF00099658 /* ReciptStepCellView.xib in Resources */,
+				F385714329BA310C00390133 /* ReciptStepViewController.storyboard in Resources */,
 				55DC4317299C8ADC00A0F2DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,17 +394,20 @@
 			files = (
 				55DC434B299CA89200A0F2DE /* FoodConnectionHandler.m in Sources */,
 				55DC4322299C8ADE00A0F2DE /* main.m in Sources */,
+				F3F5F06D29BA10E700099658 /* ReciptStepViewController.m in Sources */,
 				F3F5F04929AFC11C00099658 /* LegendView.m in Sources */,
 				F3F5F04A29AFC11C00099658 /* PieChart.m in Sources */,
+				F3F5F05129B9F23400099658 /* FoodNutritionTableCellView.m in Sources */,
 				55DC4314299C8ADC00A0F2DE /* ViewController.m in Sources */,
 				553160E2299E300100FE4F74 /* UIColor.m in Sources */,
 				55DC431A299C8ADC00A0F2DE /* FoodApp.xcdatamodeld in Sources */,
 				F370C59429AB2D5000846C70 /* welcomeMain.m in Sources */,
-				55DC435B299CBDD700A0F2DE /* FoodNutritionTableCellView.m in Sources */,
 				F3F5F04D29AFC1A100099658 /* foodPie.m in Sources */,
+				F3F5F06429BA0CFF00099658 /* ReciptStepCellView.m in Sources */,
 				55DC430E299C8ADC00A0F2DE /* AppDelegate.m in Sources */,
 				55DC4347299C940600A0F2DE /* GlobalConstant.m in Sources */,
 				F370C59129AB2D2500846C70 /* UIImage+animatedGIF.m in Sources */,
+				F3F5F06B29BA0F6900099658 /* ReciptStepNavigationController.m in Sources */,
 				55DC4353299CB82000A0F2DE /* FoodInfoString.m in Sources */,
 				55DC4311299C8ADC00A0F2DE /* SceneDelegate.m in Sources */,
 			);
